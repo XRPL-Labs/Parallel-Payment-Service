@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'AccountActivationService',
+    name: 'ParallelPaymentService',
     script: 'index.mjs',
     watch: false,
     instances: 1,

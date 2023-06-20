@@ -1,4 +1,4 @@
-# XRPL Multi TX Sender
+# XRPL Parallel Payment Service - Multi TX Sender
 
 This package contains a reference implementation of a "Sign & Submit"
 service capable of submitting multiple transactions in parallel.
@@ -27,6 +27,27 @@ This lib. will check the environment and a `.env` file. The following env. vars 
 - `MINTICKETS` - The min. amount of tickets to keep, if dropping below this value, new tickets will be created
 - `CREATETICKETS` - The amount of tickets to create per ticket refresh (make sure to keep sufficient balance to satisfy the required reserve for this amount of tickets)
 - `PORT` - The TCP port to run the servoce on (default: `3000`)
+
+# Running
+
+## Debug (CLI)
+
+`npm run dev`
+
+## Production (pm2)
+
+`npm run pm2`
+
+## Logging
+
+This package uses the `debug` package for logging, meaning logging output will not be sent
+to the console (stdout) with `console.log`, but instead it'll log based on a passed env. var:
+
+To get logging output while manually running the process with node, run:
+
+```
+DEBUG=accacser* node index.mjs
+```
 
 # Webserver
 
