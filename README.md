@@ -55,3 +55,36 @@ Default routes:
 
 - `/state` - Serves basic information
 - `/pay/{account}/{drops}` - Triggers a payout of drops to account (r...)
+
+## State response
+
+```
+{
+  "account": "r...",
+  "ticketCount": 22,
+  "ticketRefreshCount": 0,
+  "txCount": 0
+}
+```
+
+## Pay response
+
+Output of the XRPL `submit` websocket command;
+
+```
+{
+  "accepted": true,
+  /* More here */
+  "engine_result": "tesSUCCESS",
+  "engine_result_code": 0,
+  "engine_result_message": "The transaction was applied. Only final in a validated ledger.",
+  "tx_blob": "...",
+  "tx_json": {
+    "TransactionType": "Payment",
+    /* More here */
+    "TxnSignature": "...",
+    "hash": "FCB655D6D2BC59661AFF96CFF60FB6FEC93B08736018E0416965CAC632AD881D"
+  },
+  "validated_ledger_index": 38824427
+}
+```
