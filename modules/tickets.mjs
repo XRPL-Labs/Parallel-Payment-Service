@@ -140,7 +140,7 @@ const ticketService = config => {
       log('Ticket obtained', first)
       
       if (tickets.length <= config.minTickets) {
-        // Pre emtive
+        // Pre-emptive
         updateTicketCount()
       }
 
