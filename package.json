@@ -1,0 +1,23 @@
+{
+  "name": "AccountActivationService",
+  "version": "1.0.0",
+  "description": "XPRL Account Activation Service",
+  "main": "index.mjs",
+  "scripts": {
+    "dev": "DEBUG=accacser* nodemon index.mjs",
+    "pm2": "DEBUG=accacser* pm2 startOrReload pm2.config.js --env production --update-env"
+  },
+  "author": "Wietse Wind <hi@wietse.com>",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^4.3.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "xrpl-accountlib": "^2.0.6",
+    "xrpl-client": "^2.0.11"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12",
+    "pm2": "^5.1.1"
+  }
+}
