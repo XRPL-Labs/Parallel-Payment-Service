@@ -1,7 +1,7 @@
 {
-  "name": "AccountActivationService",
+  "name": "XRPL-Parallel-Payment-Service",
   "version": "1.0.0",
-  "description": "XPRL Account Activation Service",
+  "description": "XPRL Parallel Payment Service",
   "main": "index.mjs",
   "scripts": {
     "dev": "DEBUG=accacser* nodemon index.mjs",
