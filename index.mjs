@@ -91,6 +91,16 @@ app.get('/state', async (req, res) => {
   })
 })
 
+// 
+// ADD YOUR OWN TX PROCESSORS OVER HERE
+// 
+// A GOOD PRACTICE WOULD BE TO SEND NO INFORMATION
+// IN THE ROUTE OR PARAMS, BUT SIMPLY TRIGGER THIS
+// CODE TO FETCH A JOB FROM YOUR OWN SECURED INFRA
+// AND PROCESS BASED ON THAT FETCHED INFO INSTEAD OF
+// CALLED INFO.
+// 
+
 app.get('/pay/:account(r[a-zA-Z0-9]{16,})/:amount([0-9]{1,})', async (req, res) => {
   /**
    * This is where you change the tx logic.

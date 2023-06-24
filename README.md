@@ -15,6 +15,14 @@ To do this, this tool uses the [Tickets feature](https://xrpl.org/ticketcreate.h
 - Authorization (add your own Auth middleware, IP whitelisting, etc)
 - Retry: this lib. will not check the TX for finality
 
+## Piece of advice
+
+Advice: do not use this lib as is, where the payment information is SENT to this application.
+
+Instead: offer a service that returns one transaction job at a time (and only once), and trigger
+this application to **fetch** that job from your other application. This way the information
+is always obtained from a trusted endpoint, instead of sent to this lib.
+
 # Config
 
 This lib. will check the environment and a `.env` file. The following env. vars can be passed:
