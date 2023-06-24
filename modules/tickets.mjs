@@ -10,11 +10,17 @@ let ticketTimer
 let refreshingTickets = false
 
 let refreshCount = 0
+let balance = 0
 
 let tickets = []
 
 let ticketServiceReady = false
 let ticketServiceReadyResolve
+
+const updateBalance = accountInfo => {
+  log('Account balance', accountInfo.account_data.Balance)
+  balance = Number(accountInfo.account_data.Balance)
+}
 
 const ready = () => new Promise(resolve => {
   ticketServiceReadyResolve = () => {
@@ -40,7 +46,10 @@ const ticketService = config => {
     })
 
     log('Account sequence', account_data.Sequence)
+    log('Account balance', account_data.Balance)
     log('Ledger', client.getState().ledger.last)
+
+    balance = Number(account_data.Balance)
     
     const transaction = {
       TransactionType: 'TicketCreate',
@@ -85,6 +94,8 @@ const ticketService = config => {
       maxConnectionAttempts: 3,
       connectAttemptTimeoutSeconds: 5,
     })
+
+    client.send({ account: config.account, command: 'account_info' }).then(updateBalance)
 
     await client.ready()
 
@@ -152,6 +163,9 @@ const ticketService = config => {
     },
     refreshCount () {
       return refreshCount
+    },
+    balance () {
+      return balance
     },
   }
 }

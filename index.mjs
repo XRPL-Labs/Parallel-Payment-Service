@@ -55,7 +55,8 @@ const {
   get: getTicket,
   ready: ticketServiceReady,
   count: ticketCount,
-  refreshCount: ticketRefreshCount
+  refreshCount: ticketRefreshCount,
+  balance: faucetBalance,
 } = ticketService(config)
 
 await ticketServiceReady()
@@ -85,7 +86,8 @@ app.get('/state', async (req, res) => {
     account: config.account,
     ticketCount: ticketCount(),
     ticketRefreshCount: ticketRefreshCount(),
-    txCount: txCount(), 
+    txCount: txCount(),
+    balance: faucetBalance(),
   })
 })
 
