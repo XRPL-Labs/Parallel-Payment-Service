@@ -12,6 +12,7 @@ let refreshCount = 0
 let balance = 0
 
 let tickets = []
+let ticketsUsed = []
 
 let ticketServiceReady = false
 let ticketServiceReadyResolve
@@ -119,7 +120,10 @@ const ticketService = config => {
         }
       }
     } else {
-      tickets = currentTickets.account_objects.map(t => t.TicketSequence)
+      tickets = currentTickets.account_objects
+        .map(t => t.TicketSequence)
+        .filter(t => ticketsUsed.indexOf(t) < 0)
+
       if (!ticketServiceReady) {
         ticketServiceReadyResolve()
       }  
@@ -145,6 +149,7 @@ const ticketService = config => {
 
       const first = tickets?.[0]
       assert(typeof first === 'number', 'No ticket left')
+      ticketsUsed.push(first)
       tickets.splice(0, 1)
 
       log('Ticket obtained', first)
