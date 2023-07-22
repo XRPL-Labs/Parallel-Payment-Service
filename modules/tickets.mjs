@@ -6,7 +6,6 @@ import { sign, derive } from 'xrpl-accountlib'
 const log = _log('accacser:tickets')
 
 let ticketRefreshTimeout
-let ticketTimer
 let refreshingTickets = false
 
 let refreshCount = 0
@@ -130,7 +129,7 @@ const ticketService = config => {
   }
 
   updateTicketCount()
-  ticketTimer = setInterval(() => {
+  setInterval(() => {
     updateTicketCount()
   }, 60 * 5 * 1000)
   
