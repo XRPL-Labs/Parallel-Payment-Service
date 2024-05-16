@@ -21,6 +21,10 @@ const transactService = (getTicket, config) => {
         connectAttemptTimeoutSeconds: 5,
       })
 
+      const submitTimeout = setTimeout(() => {
+        client.close()
+      }, 30 * 1000)
+
       await client.ready()
   
       const transaction = Object.assign({}, {
@@ -38,10 +42,6 @@ const transactService = (getTicket, config) => {
       log('TX ID', id)
 
       count++
-
-      const submitTimeout = setTimeout(() => {
-        client.close()
-      }, 30 * 1000)
   
       const submit = await client.send({
         command: 'submit',
