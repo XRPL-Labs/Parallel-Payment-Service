@@ -36,8 +36,8 @@ const ticketService = config => {
       if (refreshingTickets) {
         log('Ticket Refresh timeout, clearing "refreshingTickets"')
         refreshingTickets = false
-        client.close()
       }
+      client.close()
     }, 60 * 1000)
 
     const {account_data} = await client.send({
@@ -128,6 +128,8 @@ const ticketService = config => {
         ticketServiceReadyResolve()
       }  
     }
+
+    client.close()
 
     return
   }
